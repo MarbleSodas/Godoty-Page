@@ -2,6 +2,9 @@
 @config "../tailwind.config.js";
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
     body {
         background-color: #0f1115;
         color: #e0e0e0;

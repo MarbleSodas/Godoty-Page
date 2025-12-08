@@ -45,7 +45,6 @@ onUnmounted(() => {
             
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-godoty-muted">
                 <a href="#features" class="hover:text-godoty-blue transition-colors">Features</a>
-                <a href="#workflow" class="hover:text-godoty-blue transition-colors">Workflow</a>
                 <a href="#pricing" class="hover:text-godoty-blue transition-colors">Pricing</a>
                 <a href="#download" class="px-4 py-2 bg-godoty-blue hover:bg-godoty-blueDim text-white rounded-lg transition-all shadow-lg shadow-godoty-blue/20">
                     Get Started
@@ -226,6 +225,63 @@ onUnmounted(() => {
                     <p class="text-godoty-muted text-sm leading-relaxed">
                         Encountered an error? Godoty analyzes the stack trace and suggests fixes instantly, reducing downtime.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-godoty-bg relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Simple Pricing</h2>
+                <p class="text-godoty-muted">Support the development and get extra value.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- $10 Pack -->
+                <div class="p-8 rounded-2xl bg-godoty-panel border border-godoty-border hover:border-godoty-blue/50 transition-all flex flex-col items-center text-center">
+                    <div class="text-godoty-muted mb-2 font-medium">Starter Pack</div>
+                    <div class="text-4xl font-bold text-white mb-6">$10</div>
+                    <ul class="space-y-3 text-sm text-godoty-muted mb-8 w-full">
+                         <li class="flex items-center justify-center gap-2">
+                            <i class="ph ph-check text-godoty-green"></i>
+                            <span>Essential Support</span>
+                        </li>
+                        <li class="flex items-center justify-center gap-2">
+                            <i class="ph ph-check text-godoty-green"></i>
+                            <span>Basic Access</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 bg-godoty-surface border border-godoty-border hover:bg-godoty-blue hover:text-white text-white rounded-xl transition-all font-semibold mt-auto">
+                        Purchase
+                    </button>
+                </div>
+
+                <!-- $25 Pack -->
+                <div class="relative p-8 rounded-2xl bg-godoty-panel border-2 border-godoty-blue/30 hover:border-godoty-blue transition-all flex flex-col items-center text-center shadow-2xl shadow-godoty-blue/10">
+                    <div class="absolute -top-4 bg-gradient-to-r from-godoty-blue to-cyan-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+                        $26 Value!
+                    </div>
+                    <div class="text-godoty-blue mb-2 font-medium">Pro Pack</div>
+                    <div class="text-4xl font-bold text-white mb-6">$25</div>
+                    <ul class="space-y-3 text-sm text-godoty-muted mb-8 w-full">
+                         <li class="flex items-center justify-center gap-2">
+                            <i class="ph ph-check text-godoty-green"></i>
+                            <span>Priority Support</span>
+                        </li>
+                        <li class="flex items-center justify-center gap-2">
+                            <i class="ph ph-check text-godoty-green"></i>
+                            <span>Extended Access</span>
+                        </li>
+                        <li class="flex items-center justify-center gap-2">
+                            <i class="ph ph-star text-yellow-500"></i>
+                            <span>Badge on Profile</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 bg-godoty-blue hover:bg-godoty-blueDim text-white rounded-xl transition-all font-semibold mt-auto shadow-lg shadow-godoty-blue/20">
+                        Purchase
+                    </button>
                 </div>
             </div>
         </div>
