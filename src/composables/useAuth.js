@@ -43,7 +43,7 @@ export function useAuth() {
 
         const { data, error: fetchError } = await supabase
             .from('profiles')
-            .select('credits')
+            .select('credit_balance')
             .eq('id', user.value.id)
             .single()
 
@@ -52,7 +52,7 @@ export function useAuth() {
             return
         }
 
-        credits.value = parseFloat(data?.credits || 0)
+        credits.value = parseFloat(data?.credit_balance || 0)
     }
 
     const subscribeToCredits = () => {
@@ -69,7 +69,7 @@ export function useAuth() {
                     filter: `id=eq.${user.value.id}`
                 },
                 (payload) => {
-                    credits.value = parseFloat(payload.new.credits || 0)
+                    credits.value = parseFloat(payload.new.credit_balance || 0)
                 }
             )
             .subscribe()

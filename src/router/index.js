@@ -3,12 +3,18 @@ import Home from '../views/Home.vue'
 import AuthCallback from '../views/AuthCallback.vue'
 import CheckoutSuccess from '../views/CheckoutSuccess.vue'
 import CheckoutCancel from '../views/CheckoutCancel.vue'
+import CreditPacks from '../views/CreditPacks.vue'
 
 const routes = [
     {
         path: '/',
         name: 'Home',
         component: Home
+    },
+    {
+        path: '/credits',
+        name: 'CreditPacks',
+        component: CreditPacks
     },
     {
         path: '/auth/callback',
