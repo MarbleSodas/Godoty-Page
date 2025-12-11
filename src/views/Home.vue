@@ -268,76 +268,86 @@ onUnmounted(() => {
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div 
-            v-if="mobileMenuOpen"
-            class="fixed inset-0 bg-godoty-bg z-40 flex flex-col pt-24 px-6 md:hidden overflow-y-auto"
-        >
-            <div class="flex flex-col gap-6 text-lg font-medium text-godoty-muted">
-                <a 
-                    href="#features" 
+        <Teleport to="body">
+            <div 
+                v-if="mobileMenuOpen"
+                class="fixed inset-0 bg-godoty-bg z-[60] flex flex-col pt-24 px-6 md:hidden overflow-y-auto"
+            >
+                <!-- Close Button (Added for better UX since it's now full screen/body level) -->
+                <button 
+                    class="absolute top-4 right-6 p-2 text-white"
                     @click="mobileMenuOpen = false"
-                    class="py-2 border-b border-godoty-border hover:text-white transition-colors"
                 >
-                    Features
-                </a>
-                <a 
-                    href="#pricing" 
-                    @click="mobileMenuOpen = false"
-                    class="py-2 border-b border-godoty-border hover:text-white transition-colors"
-                >
-                    Pricing
-                </a>
-                
-                <div class="mt-4 flex flex-col gap-4">
-                     <template v-if="!loading">
-                        <template v-if="!user">
-                            <button 
-                                @click="openAuthModal('login'); mobileMenuOpen = false"
-                                class="w-full py-3 bg-godoty-blue text-white rounded-xl font-semibold shadow-lg shadow-godoty-blue/20"
-                            >
-                                Sign In
-                            </button>
-                             <button 
-                                @click="openAuthModal('signup'); mobileMenuOpen = false"
-                                class="w-full py-3 bg-godoty-surface border border-godoty-border text-white rounded-xl font-semibold"
-                            >
-                                Create Account
-                            </button>
-                        </template>
-                        <template v-else>
-                             <div class="flex items-center gap-3 py-4 border-b border-godoty-border">
-                                <div class="w-10 h-10 rounded-full bg-godoty-blue flex items-center justify-center text-white font-bold">
-                                    {{ user.email?.charAt(0).toUpperCase() }}
-                                </div>
-                                <div class="overflow-hidden">
-                                    <p class="text-white font-medium truncate">{{ user.email }}</p>
-                                    <p class="text-godoty-muted text-sm flex items-center gap-1">
-                                        <i class="ph ph-coins text-godoty-blue"></i>
-                                        {{ credits.toFixed(2) }} credits
-                                    </p>
-                                </div>
-                            </div>
+                    <i class="ph ph-x text-2xl"></i>
+                </button>
 
-                             <button 
-                                @click="handlePurchase('starter'); mobileMenuOpen = false" 
-                                class="w-full py-3 text-left hover:text-white transition-colors flex items-center gap-2"
-                            >
-                                <i class="ph ph-plus-circle"></i>
-                                Buy Credits
-                             </button>
-                             
-                            <button 
-                                @click="handleSignOut(); mobileMenuOpen = false"
-                                class="w-full py-3 text-left text-red-400 hover:text-red-300 transition-colors flex items-center gap-2"
-                            >
-                                <i class="ph ph-sign-out"></i>
-                                Sign Out
-                            </button>
-                        </template>
-                     </template>
+                <div class="flex flex-col gap-6 text-lg font-medium text-godoty-muted">
+                    <a 
+                        href="#features" 
+                        @click="mobileMenuOpen = false"
+                        class="py-2 border-b border-godoty-border hover:text-white transition-colors"
+                    >
+                        Features
+                    </a>
+                    <a 
+                        href="#pricing" 
+                        @click="mobileMenuOpen = false"
+                        class="py-2 border-b border-godoty-border hover:text-white transition-colors"
+                    >
+                        Pricing
+                    </a>
+                    
+                    <div class="mt-4 flex flex-col gap-4">
+                         <template v-if="!loading">
+                            <template v-if="!user">
+                                <button 
+                                    @click="openAuthModal('login'); mobileMenuOpen = false"
+                                    class="w-full py-3 bg-godoty-blue text-white rounded-xl font-semibold shadow-lg shadow-godoty-blue/20"
+                                >
+                                    Sign In
+                                </button>
+                                 <button 
+                                    @click="openAuthModal('signup'); mobileMenuOpen = false"
+                                    class="w-full py-3 bg-godoty-surface border border-godoty-border text-white rounded-xl font-semibold"
+                                >
+                                    Create Account
+                                </button>
+                            </template>
+                            <template v-else>
+                                 <div class="flex items-center gap-3 py-4 border-b border-godoty-border">
+                                    <div class="w-10 h-10 rounded-full bg-godoty-blue flex items-center justify-center text-white font-bold">
+                                        {{ user.email?.charAt(0).toUpperCase() }}
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <p class="text-white font-medium truncate">{{ user.email }}</p>
+                                        <p class="text-godoty-muted text-sm flex items-center gap-1">
+                                            <i class="ph ph-coins text-godoty-blue"></i>
+                                            {{ credits.toFixed(2) }} credits
+                                        </p>
+                                    </div>
+                                </div>
+    
+                                 <button 
+                                    @click="handlePurchase('starter'); mobileMenuOpen = false" 
+                                    class="w-full py-3 text-left hover:text-white transition-colors flex items-center gap-2"
+                                >
+                                    <i class="ph ph-plus-circle"></i>
+                                    Buy Credits
+                                 </button>
+                                 
+                                <button 
+                                    @click="handleSignOut(); mobileMenuOpen = false"
+                                    class="w-full py-3 text-left text-red-400 hover:text-red-300 transition-colors flex items-center gap-2"
+                                >
+                                    <i class="ph ph-sign-out"></i>
+                                    Sign Out
+                                </button>
+                            </template>
+                         </template>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Teleport>
     </nav>
 
     <!-- Auth Modal -->
