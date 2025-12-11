@@ -9,6 +9,7 @@ const scrolled = ref(false)
 const activeOS = ref('windows')
 const showAuthModal = ref(false)
 const showUserMenu = ref(false)
+const mobileMenuOpen = ref(false)
 const authMode = ref('login') // 'login', 'signup', 'magic'
 const authLoading = ref(false)
 const authError = ref(null)
@@ -175,13 +176,14 @@ onUnmounted(() => {
 <div class="min-h-screen flex flex-col">
     
     <!-- Navbar -->
-    <nav class="fixed w-full top-0 z-50 transition-all duration-300 border-b border-transparent" :class="{'glass-panel border-godoty-border': scrolled}">
+    <nav class="fixed w-full top-0 z-50 transition-all duration-300 border-b border-transparent" :class="{'glass-panel border-godoty-border': scrolled || mobileMenuOpen}">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 relative z-50">
                 <img :src="logoSvg" alt="Godoty Logo" class="w-8 h-8" />
                 <span class="font-bold text-xl tracking-tight text-white">Godoty</span>
             </div>
             
+            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-godoty-muted">
                 <a href="#features" class="hover:text-godoty-blue transition-colors">Features</a>
                 <a href="#pricing" class="hover:text-godoty-blue transition-colors">Pricing</a>
@@ -257,9 +259,84 @@ onUnmounted(() => {
             </div>
             
             <!-- Mobile Menu Button -->
-            <button class="md:hidden text-white">
-                <i class="ph ph-list text-2xl"></i>
+            <button 
+                class="md:hidden text-white relative z-50 p-2"
+                @click="mobileMenuOpen = !mobileMenuOpen"
+            >
+                <i :class="mobileMenuOpen ? 'ph ph-x' : 'ph ph-list'" class="text-2xl"></i>
             </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div 
+            v-if="mobileMenuOpen"
+            class="fixed inset-0 bg-godoty-bg z-40 flex flex-col pt-24 px-6 md:hidden overflow-y-auto"
+        >
+            <div class="flex flex-col gap-6 text-lg font-medium text-godoty-muted">
+                <a 
+                    href="#features" 
+                    @click="mobileMenuOpen = false"
+                    class="py-2 border-b border-godoty-border hover:text-white transition-colors"
+                >
+                    Features
+                </a>
+                <a 
+                    href="#pricing" 
+                    @click="mobileMenuOpen = false"
+                    class="py-2 border-b border-godoty-border hover:text-white transition-colors"
+                >
+                    Pricing
+                </a>
+                
+                <div class="mt-4 flex flex-col gap-4">
+                     <template v-if="!loading">
+                        <template v-if="!user">
+                            <button 
+                                @click="openAuthModal('login'); mobileMenuOpen = false"
+                                class="w-full py-3 bg-godoty-blue text-white rounded-xl font-semibold shadow-lg shadow-godoty-blue/20"
+                            >
+                                Sign In
+                            </button>
+                             <button 
+                                @click="openAuthModal('signup'); mobileMenuOpen = false"
+                                class="w-full py-3 bg-godoty-surface border border-godoty-border text-white rounded-xl font-semibold"
+                            >
+                                Create Account
+                            </button>
+                        </template>
+                        <template v-else>
+                             <div class="flex items-center gap-3 py-4 border-b border-godoty-border">
+                                <div class="w-10 h-10 rounded-full bg-godoty-blue flex items-center justify-center text-white font-bold">
+                                    {{ user.email?.charAt(0).toUpperCase() }}
+                                </div>
+                                <div class="overflow-hidden">
+                                    <p class="text-white font-medium truncate">{{ user.email }}</p>
+                                    <p class="text-godoty-muted text-sm flex items-center gap-1">
+                                        <i class="ph ph-coins text-godoty-blue"></i>
+                                        {{ credits.toFixed(2) }} credits
+                                    </p>
+                                </div>
+                            </div>
+
+                             <button 
+                                @click="handlePurchase('starter'); mobileMenuOpen = false" 
+                                class="w-full py-3 text-left hover:text-white transition-colors flex items-center gap-2"
+                            >
+                                <i class="ph ph-plus-circle"></i>
+                                Buy Credits
+                             </button>
+                             
+                            <button 
+                                @click="handleSignOut(); mobileMenuOpen = false"
+                                class="w-full py-3 text-left text-red-400 hover:text-red-300 transition-colors flex items-center gap-2"
+                            >
+                                <i class="ph ph-sign-out"></i>
+                                Sign Out
+                            </button>
+                        </template>
+                     </template>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -377,7 +454,7 @@ onUnmounted(() => {
     </Teleport>
 
     <!-- Hero Section -->
-    <header class="relative pt-32 pb-20 overflow-hidden">
+    <header class="relative pt-24 lg:pt-32 pb-20 overflow-hidden">
         <div class="absolute inset-0 hero-glow z-0"></div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
@@ -392,7 +469,7 @@ onUnmounted(() => {
                     Compatible with Godot 4.5
                 </div>
                 
-                <h1 class="text-5xl lg:text-6xl font-bold leading-tight text-white">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
                     Your Intelligent <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-godoty-blue to-cyan-400">Godot Companion</span>
                 </h1>
@@ -401,12 +478,12 @@ onUnmounted(() => {
                     Generate plans, debug scripts, and track your project history without leaving your workflow. The AI copilot designed specifically for GDScript.
                 </p>
                 
-                <div class="flex flex-wrap gap-4">
-                    <button @click="scrollToDownload" class="px-8 py-3.5 bg-godoty-blue hover:bg-godoty-blueDim text-white font-semibold rounded-xl transition-all transform hover:-translate-y-0.5 shadow-xl shadow-godoty-blue/20 flex items-center gap-2">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button @click="scrollToDownload" class="px-8 py-3.5 bg-godoty-blue hover:bg-godoty-blueDim text-white font-semibold rounded-xl transition-all transform hover:-translate-y-0.5 shadow-xl shadow-godoty-blue/20 flex items-center justify-center gap-2">
                         <i class="ph ph-download-simple text-xl"></i>
                         Download Beta
                     </button>
-                    <button class="px-8 py-3.5 bg-godoty-surface border border-godoty-border hover:border-godoty-blue/50 text-white font-medium rounded-xl transition-all flex items-center gap-2">
+                    <button class="px-8 py-3.5 bg-godoty-surface border border-godoty-border hover:border-godoty-blue/50 text-white font-medium rounded-xl transition-all flex items-center justify-center gap-2">
                         <i class="ph ph-play-circle text-xl"></i>
                         Watch Demo
                     </button>
