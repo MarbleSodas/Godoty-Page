@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        background-color: #0f1115;
+        color: #e0e0e0;
+        overflow-x: hidden;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f1115;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2f343e;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4a9eff;
+}
+
+.glass-panel {
+    background: rgba(24, 27, 33, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-glow {
+    background: radial-gradient(circle at center, rgba(74, 158, 255, 0.15) 0%, rgba(15, 17, 21, 0) 70%);
+}
+
+/* Syntax Highlighting Mock */
+.token.keyword {
+    color: #ff7b72;
+}
+
+.token.string {
+    color: #a5d6ff;
+}
+
+.token.func {
+    color: #d2a8ff;
+}
+
+.token.comment {
+    color: #8b949e;
+}
