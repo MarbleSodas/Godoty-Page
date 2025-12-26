@@ -5,54 +5,95 @@
     html {
         scroll-behavior: smooth;
     }
+
     body {
-        background-color: #0f1115;
+        background-color: #202531;
         color: #e0e0e0;
         overflow-x: hidden;
     }
+
+    ::selection {
+        background-color: #478cbf;
+        color: white;
+    }
 }
 
-/* Custom Scrollbar */
+@layer components {
+    .card {
+        @apply bg-godot-surface rounded-lg shadow-xl border border-godot-border;
+    }
+
+    .input {
+        @apply w-full px-4 py-3 bg-godot-darker border border-godot-border rounded-xl text-godot-text placeholder-godot-muted focus:outline-none focus:ring-2 focus:ring-godot-blue focus:border-transparent transition-all;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-godot-dark disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .btn-primary {
+        @apply bg-godot-blue hover:bg-godot-blue-hover text-white shadow-lg shadow-godot-blue/20 hover:shadow-godot-blue/40 border border-transparent;
+    }
+
+    .btn-secondary {
+        @apply bg-godot-surface hover:bg-godot-border text-godot-text border border-godot-border shadow-sm hover:shadow-md;
+    }
+
+    .btn-success {
+        @apply bg-godot-green hover:brightness-110 text-white shadow-lg shadow-godot-green/20 border border-transparent;
+    }
+
+    .btn-danger {
+        @apply bg-godot-red hover:brightness-110 text-white shadow-lg shadow-godot-red/20 border border-transparent;
+    }
+
+    .btn-sm {
+        @apply px-3 py-1.5 text-sm;
+    }
+
+    .btn-lg {
+        @apply px-6 py-3 text-base;
+    }
+
+    .glass-panel {
+        @apply bg-godot-darker/80 backdrop-blur-xl border border-godot-border;
+    }
+}
+
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0f1115;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #2f343e;
+    background: #3b4458;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #4a9eff;
+    background: #4b556b;
 }
 
-.glass-panel {
-    background: rgba(24, 27, 33, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.hero-glow {
-    background: radial-gradient(circle at center, rgba(74, 158, 255, 0.15) 0%, rgba(15, 17, 21, 0) 70%);
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Syntax Highlighting Mock */
-.token.keyword {
-    color: #ff7b72;
-}
-
-.token.string {
-    color: #a5d6ff;
-}
-
-.token.func {
-    color: #d2a8ff;
-}
-
-.token.comment {
-    color: #8b949e;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

@@ -12,7 +12,3 @@ onMounted(() => {
 <template>
     <router-view />
 </template>
-
-<style scoped>
-/* Scoped styles if needed, but most is in global style.css */
-</style>

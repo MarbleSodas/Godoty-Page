@@ -13,9 +13,9 @@ const goToPricing = () => {
 </script>
 
 <template>
-<div class="min-h-screen flex items-center justify-center bg-godoty-bg">
+<div class="min-h-screen flex items-center justify-center bg-godot-dark">
     <div class="max-w-md w-full mx-4">
-        <div class="bg-godoty-panel border border-godoty-border rounded-2xl p-8 text-center space-y-6">
+        <div class="bg-godot-darker border border-godot-border rounded-2xl p-8 text-center space-y-6">
             <!-- Cancel Icon -->
             <div class="flex justify-center">
                 <div class="w-20 h-20 rounded-full bg-yellow-500/20 flex items-center justify-center">
@@ -26,14 +26,14 @@ const goToPricing = () => {
             <!-- Cancel Message -->
             <div>
                 <h1 class="text-2xl font-bold text-white mb-2">Payment Cancelled</h1>
-                <p class="text-godoty-muted">Your payment was cancelled. No charges were made to your account.</p>
+                <p class="text-godot-muted">Your payment was cancelled. No charges were made to your account.</p>
             </div>
             
             <!-- Info Box -->
-            <div class="bg-godoty-surface rounded-xl p-4 border border-godoty-border text-left">
+            <div class="bg-godot-surface rounded-xl p-4 border border-godot-border text-left">
                 <div class="flex items-start gap-3">
-                    <i class="ph ph-info text-godoty-blue text-xl shrink-0 mt-0.5"></i>
-                    <div class="text-sm text-godoty-muted">
+                    <i class="ph ph-info text-godot-blue text-xl shrink-0 mt-0.5"></i>
+                    <div class="text-sm text-godot-muted">
                         <p class="mb-2">If you experienced any issues during checkout, please try again or contact our support team.</p>
                         <p>Your cart and selections are still available.</p>
                     </div>
@@ -44,21 +44,21 @@ const goToPricing = () => {
             <div class="space-y-3 pt-4">
                 <button 
                     @click="goToPricing"
-                    class="w-full py-3 bg-godoty-blue hover:bg-godoty-blueDim text-white font-semibold rounded-xl transition-colors"
+                    class="w-full py-3 bg-godot-blue hover:bg-godot-blueDim text-white font-semibold rounded-xl transition-colors"
                 >
                     Try Again
                 </button>
                 <button 
                     @click="goHome"
-                    class="w-full py-3 bg-godoty-surface border border-godoty-border hover:border-godoty-blue text-white rounded-xl transition-colors"
+                    class="w-full py-3 bg-godot-surface border border-godot-border hover:border-godot-blue text-white rounded-xl transition-colors"
                 >
                     Return Home
                 </button>
             </div>
             
             <!-- Support Link -->
-            <p class="text-xs text-godoty-muted">
-                Need help? <a href="#" class="text-godoty-blue hover:underline">Contact Support</a>
+            <p class="text-xs text-godot-muted">
+                Need help? <a href="#" class="text-godot-blue hover:underline">Contact Support</a>
             </p>
         </div>
     </div>
