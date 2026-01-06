@@ -99,44 +99,35 @@ export function useAuth() {
         }
 
         // If no cached key, credits will be updated when generateLitellmKey is called
-        // Query secure view (user_credit_balance) - RLS ensures only own data is returned
+        // Query dedicated credits table for better realtime support
         const { data, error: fetchError } = await supabase
-            .from('user_credit_balance')
-            .select('max_budget, spend, remaining_balance')
+            .from('user_credits')
+            .select('balance')
             .maybeSingle()
 
         if (fetchError) {
-            // Fallback to LiteLLM_UserTable if view doesn't exist yet
-            if (fetchError.code === '42P01') { // relation does not exist
-                console.warn('user_credit_balance view not found, using LiteLLM_UserTable fallback')
-                const { data: fallbackData, error: fallbackError } = await supabase
-                    .from('LiteLLM_UserTable')
-                    .select('max_budget, spend')
-                    .eq('user_id', user.value.id)
-                    .maybeSingle()
+            // Fallback to secure view (user_credit_balance) if table doesn't exist yet
+            console.warn('user_credits table error, falling back to view:', fetchError.message)
+            const { data: viewData, error: viewError } = await supabase
+                .from('user_credit_balance')
+                .select('remaining_credits')
+                .maybeSingle()
 
-                if (!fallbackError && fallbackData) {
-                    const maxBudget = parseFloat(fallbackData.max_budget || 0)
-                    const spend = parseFloat(fallbackData.spend || 0)
-                    credits.value = Math.max(0, maxBudget - spend)
-                }
-                return
+            if (!viewError && viewData) {
+                credits.value = parseFloat(viewData.remaining_credits || 0)
             }
-            console.error('Error fetching credits:', fetchError)
             return
         }
 
         if (data) {
-            // Use pre-computed remaining_balance from secure view
-            credits.value = parseFloat(data.remaining_balance || 0)
+            credits.value = parseFloat(data.balance || 0)
         }
     }
 
     const subscribeToCredits = () => {
         if (!user.value || profileSubscription) return
 
-        // Subscribe to LiteLLM_UserTable changes (RLS restricts to own data)
-        // Note: Realtime works on base tables, not views, so we still subscribe to LiteLLM_UserTable
+        // Subscribe to user_credits table changes (RLS restricts to own data)
         profileSubscription = supabase
             .channel('user-credits')
             .on(
@@ -144,17 +135,13 @@ export function useAuth() {
                 {
                     event: '*',
                     schema: 'public',
-                    table: 'LiteLLM_UserTable',
+                    table: 'user_credits',
                     filter: `user_id=eq.${user.value.id}`
                 },
-                async (payload) => {
-                    // Calculate credit_balance from max_budget - spend
-                    if (payload.new) {
-                        const maxBudget = parseFloat(payload.new.max_budget || 0)
-                        const spend = parseFloat(payload.new.spend || 0)
-                        credits.value = Math.max(0, maxBudget - spend)
+                (payload) => {
+                    if (payload.new && payload.new.balance !== undefined) {
+                        credits.value = parseFloat(payload.new.balance)
                     }
-                    // No fallback needed - realtime always provides payload.new for updates
                 }
             )
             .subscribe()
