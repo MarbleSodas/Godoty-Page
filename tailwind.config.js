@@ -11,16 +11,16 @@ export default {
                 godot: {
                     blue: '#478cbf',       // Primary accent (Godot blue)
                     'blue-hover': '#5aa3d6', // Blue hover state
-                    dark: '#202531',       // Main background
-                    darker: '#1a1e29',     // Sidebar/deeper elements
-                    surface: '#2d3546',    // Cards/input backgrounds
-                    border: '#3b4458',     // Borders
-                    text: '#e0e0e0',       // Primary text
-                    muted: '#9ca3af',      // Secondary text/icons
+                    dark: '#141b26',       // Main background
+                    darker: '#0d1117',     // Sidebar/deeper elements
+                    surface: '#1c263b',    // Cards/input backgrounds
+                    border: '#3b4c6e',     // Borders
+                    text: '#e0e6f0',       // Primary text
+                    muted: '#94a0b8',      // Secondary text/icons
                     accent: '#478cbf',     // Alias for primary action
-                    green: '#22c55e',      // Success green
-                    yellow: '#eab308',     // Warning/coins
-                    red: '#ef4444',        // Error/danger
+                    green: '#45e295',      // Success green
+                    yellow: '#ffdd66',     // Warning/coins
+                    red: '#ff7085',        // Error/danger
                 },
             },
             fontFamily: {

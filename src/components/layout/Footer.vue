@@ -17,7 +17,7 @@ import logoSvg from '../../assets/logo.svg'
       </div>
       
       <div class="text-xs text-godot-muted">
-        &copy; 2025 Godoty AI. All rights reserved.
+        &copy; 2026 Godoty AI. All rights reserved.
       </div>
     </div>
   </footer>

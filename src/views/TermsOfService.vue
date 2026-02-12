@@ -2,11 +2,11 @@
 import { RouterLink } from 'vue-router'
 import logoSvg from '../assets/logo.svg'
 
-const lastUpdated = 'December 17, 2025'
+const lastUpdated = 'February 12, 2026'
 </script>
 
 <template>
-<div class="min-h-screen bg-godot-dark">
+<div class="min-h-screen bg-godot-dark text-godot-text">
     <!-- Header -->
     <header class="border-b border-godot-border bg-godot-darker/50 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -31,11 +31,10 @@ const lastUpdated = 'December 17, 2025'
                 <p class="text-godot-muted leading-relaxed">
                     Welcome to Godoty ("we," "our," or "us"). These Terms of Service ("Terms") govern your access to and 
                     use of the Godoty desktop application, website at godoty.app, and related services (collectively, the "Service"). 
-                    By creating an account or using the Service, you agree to be bound by these Terms.
+                    By using the Service, you agree to be bound by these Terms.
                 </p>
                 <p class="text-godot-muted leading-relaxed mt-4">
-                    Godoty is an AI-powered assistant designed to help developers working with the Godot game engine. 
-                    The Service provides code generation, debugging assistance, planning tools, and project analysis capabilities.
+                    Godoty is an AI-integrated desktop application designed to bridge the gap between AI assistants and the Godot Engine.
                 </p>
             </section>
             
@@ -43,45 +42,13 @@ const lastUpdated = 'December 17, 2025'
             <section>
                 <h2 class="text-2xl font-bold text-white mb-4">2. Eligibility</h2>
                 <p class="text-godot-muted leading-relaxed">
-                    You must be at least 13 years old to use the Service. If you are under 18, you must have permission 
-                    from a parent or guardian. By using Godoty, you represent that you meet these requirements.
+                    You must be at least 13 years old to use the Service. By using Godoty, you represent that you meet these requirements.
                 </p>
-            </section>
-            
-            <!-- Account Registration -->
-            <section>
-                <h2 class="text-2xl font-bold text-white mb-4">3. Account Registration</h2>
-                <p class="text-godot-muted leading-relaxed">
-                    To access certain features, you must create an account using:
-                </p>
-                <ul class="list-disc pl-6 mt-4 text-godot-muted space-y-2">
-                    <li>Email and password, or</li>
-                    <li>OAuth authentication via Google or GitHub</li>
-                </ul>
-                <p class="text-godot-muted leading-relaxed mt-4">
-                    You are responsible for maintaining the security of your account credentials and for all activities 
-                    that occur under your account. You must immediately notify us of any unauthorized use of your account.
-                </p>
-            </section>
-            
-            <!-- Credits and Payment -->
-            <section>
-                <h2 class="text-2xl font-bold text-white mb-4">4. Credits and Payment</h2>
-                <p class="text-godot-muted leading-relaxed">
-                    Godoty uses a credit-based system to access AI features:
-                </p>
-                <ul class="list-disc pl-6 mt-4 text-godot-muted space-y-2">
-                    <li>Credits are purchased through our payment processor, Stripe</li>
-                    <li>Credits do not expire and remain in your account until used</li>
-                    <li>All purchases are final and non-refundable, except as required by law</li>
-                    <li>We reserve the right to modify credit pricing at any time with reasonable notice</li>
-                    <li>Credits are non-transferable between accounts</li>
-                </ul>
             </section>
             
             <!-- Acceptable Use -->
             <section>
-                <h2 class="text-2xl font-bold text-white mb-4">5. Acceptable Use</h2>
+                <h2 class="text-2xl font-bold text-white mb-4">3. Acceptable Use</h2>
                 <p class="text-godot-muted leading-relaxed">
                     You agree not to use the Service to:
                 </p>
@@ -90,25 +57,19 @@ const lastUpdated = 'December 17, 2025'
                     <li>Generate malicious code, malware, or content intended to harm others</li>
                     <li>Infringe upon intellectual property rights of third parties</li>
                     <li>Attempt to reverse engineer, decompile, or exploit the Service</li>
-                    <li>Share account credentials or allow unauthorized access</li>
-                    <li>Abuse, harass, or harm other users or our staff</li>
-                    <li>Circumvent usage limits or credit systems</li>
-                    <li>Use the Service to train competing AI models</li>
                 </ul>
             </section>
             
             <!-- Intellectual Property -->
             <section>
-                <h2 class="text-2xl font-bold text-white mb-4">6. Intellectual Property</h2>
+                <h2 class="text-2xl font-bold text-white mb-4">4. Intellectual Property</h2>
                 <p class="text-godot-muted leading-relaxed">
                     <strong class="text-white">Your Content:</strong> You retain ownership of any code, projects, or content 
-                    you provide to the Service. By using Godoty, you grant us a limited license to process this content 
-                    solely to provide the Service to you.
+                    you provide to the Service.
                 </p>
                 <p class="text-godot-muted leading-relaxed mt-4">
                     <strong class="text-white">AI-Generated Content:</strong> Code and suggestions generated by Godoty are 
-                    provided for your use. You are responsible for reviewing and testing any AI-generated code before 
-                    incorporating it into your projects.
+                    provided for your use. You are responsible for reviewing and testing any AI-generated code.
                 </p>
                 <p class="text-godot-muted leading-relaxed mt-4">
                     <strong class="text-white">Our Property:</strong> The Godoty name, logo, software, and all related 
@@ -116,97 +77,40 @@ const lastUpdated = 'December 17, 2025'
                 </p>
             </section>
             
-            <!-- Third-Party Services -->
-            <section>
-                <h2 class="text-2xl font-bold text-white mb-4">7. Third-Party Services</h2>
-                <p class="text-godot-muted leading-relaxed">
-                    The Service integrates with third-party providers including:
-                </p>
-                <ul class="list-disc pl-6 mt-4 text-godot-muted space-y-2">
-                    <li><strong class="text-white">Supabase:</strong> Authentication and database services</li>
-                    <li><strong class="text-white">Stripe:</strong> Payment processing</li>
-                    <li><strong class="text-white">AI Providers:</strong> Large language model services (OpenAI, Anthropic, etc.)</li>
-                </ul>
-                <p class="text-godot-muted leading-relaxed mt-4">
-                    Your use of these services is subject to their respective terms and privacy policies.
-                </p>
-            </section>
-            
             <!-- Disclaimer of Warranties -->
             <section>
-                <h2 class="text-2xl font-bold text-white mb-4">8. Disclaimer of Warranties</h2>
+                <h2 class="text-2xl font-bold text-white mb-4">5. Disclaimer of Warranties</h2>
                 <p class="text-godot-muted leading-relaxed">
-                    THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, 
-                    EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT:
-                </p>
-                <ul class="list-disc pl-6 mt-4 text-godot-muted space-y-2">
-                    <li>The Service will be uninterrupted, secure, or error-free</li>
-                    <li>AI-generated code will be accurate, complete, or fit for any particular purpose</li>
-                    <li>The Service will meet your specific requirements</li>
-                </ul>
-                <p class="text-godot-muted leading-relaxed mt-4">
-                    You acknowledge that AI-generated content may contain errors and should always be reviewed 
-                    before use in production environments.
+                    THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. 
+                    AI-generated content may contain errors and should always be reviewed before use.
                 </p>
             </section>
             
             <!-- Limitation of Liability -->
             <section>
-                <h2 class="text-2xl font-bold text-white mb-4">9. Limitation of Liability</h2>
+                <h2 class="text-2xl font-bold text-white mb-4">6. Limitation of Liability</h2>
                 <p class="text-godot-muted leading-relaxed">
                     TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, 
-                    SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, 
-                    DATA, OR GOODWILL, ARISING FROM YOUR USE OF THE SERVICE.
-                </p>
-                <p class="text-godot-muted leading-relaxed mt-4">
-                    Our total liability for any claims arising from your use of the Service shall not exceed 
-                    the amount you paid to us in the twelve (12) months preceding the claim.
-                </p>
-            </section>
-            
-            <!-- Termination -->
-            <section>
-                <h2 class="text-2xl font-bold text-white mb-4">10. Termination</h2>
-                <p class="text-godot-muted leading-relaxed">
-                    We may suspend or terminate your account if you violate these Terms or for any other reason 
-                    at our discretion. Upon termination:
-                </p>
-                <ul class="list-disc pl-6 mt-4 text-godot-muted space-y-2">
-                    <li>Your access to the Service will be revoked</li>
-                    <li>Any unused credits will be forfeited</li>
-                    <li>We may delete your account data in accordance with our Privacy Policy</li>
-                </ul>
-                <p class="text-godot-muted leading-relaxed mt-4">
-                    You may terminate your account at any time by contacting us.
-                </p>
-            </section>
-            
-            <!-- Changes to Terms -->
-            <section>
-                <h2 class="text-2xl font-bold text-white mb-4">11. Changes to Terms</h2>
-                <p class="text-godot-muted leading-relaxed">
-                    We may update these Terms from time to time. We will notify you of significant changes via 
-                    email or by posting a notice on the Service. Your continued use of the Service after such 
-                    changes constitutes acceptance of the updated Terms.
+                    OR CONSEQUENTIAL DAMAGES ARISING FROM YOUR USE OF THE SERVICE.
                 </p>
             </section>
             
             <!-- Governing Law -->
             <section>
-                <h2 class="text-2xl font-bold text-white mb-4">12. Governing Law</h2>
+                <h2 class="text-2xl font-bold text-white mb-4">7. Governing Law</h2>
                 <p class="text-godot-muted leading-relaxed">
                     These Terms shall be governed by and construed in accordance with the laws of the 
-                    United States, without regard to its conflict of law provisions.
+                    United States.
                 </p>
             </section>
             
             <!-- Contact -->
             <section>
-                <h2 class="text-2xl font-bold text-white mb-4">13. Contact Us</h2>
+                <h2 class="text-2xl font-bold text-white mb-4">8. Contact Us</h2>
                 <p class="text-godot-muted leading-relaxed">
                     If you have any questions about these Terms, please contact us at:
                 </p>
-                <p class="text-godot-blue mt-4">support@godoty.app</p>
+                <p class="text-godot-blue mt-4">support@goodfaithgames.com</p>
             </section>
         </div>
         
